@@ -8,7 +8,25 @@ import { existsSync } from "node:fs";
 import { chromium } from "@playwright/test";
 
 const origin = process.env.AUDIT_URL || "http://127.0.0.1:3000";
-const output = path.resolve("artifacts/lighthouse");
+const knownRoutes = ["/", "/ar/", "/he/", "/de/", "/projects/pathy/"];
+const knownDevices = ["mobile", "desktop"];
+const [routeFilter, deviceFilter, ...extraArguments] = process.argv.slice(2);
+if (
+  extraArguments.length ||
+  (routeFilter !== undefined && !knownRoutes.includes(routeFilter)) ||
+  (deviceFilter !== undefined && !knownDevices.includes(deviceFilter))
+)
+  throw new Error(
+    `Usage: npm run audit -- [route] [mobile|desktop]. Routes: ${knownRoutes.join(", ")}`,
+  );
+const routeName = (route) =>
+  route === "/" ? "home" : route.replaceAll("/", "-").replace(/^-|-$/g, "");
+const output = path.resolve(
+  "artifacts/lighthouse",
+  routeFilter
+    ? `recheck-${routeName(routeFilter)}${deviceFilter ? `-${deviceFilter}` : ""}`
+    : ".",
+);
 const chromePath =
   process.env.CHROME_PATH ||
   (process.platform === "win32" &&
@@ -25,19 +43,21 @@ if (!readiness.ok)
   throw new Error(
     `Production preview returned ${readiness.status}. Build and start it first.`,
   );
-const browser = await launchAuditBrowser(chromePath);
-const { chrome } = browser;
 const measurements = [];
-let cleanupWarning = null;
-try {
-  for (const route of ["/", "/ar/", "/he/", "/de/", "/projects/pathy/"]) {
-    for (const device of ["mobile", "desktop"]) {
-      const runs = repeat;
-      for (let run = 1; run <= runs; run++) {
+const failures = [];
+const cleanupWarnings = [];
+for (const route of routeFilter ? [routeFilter] : knownRoutes) {
+  for (const device of deviceFilter ? [deviceFilter] : knownDevices) {
+    for (let run = 1; run <= repeat; run++) {
+      let browser;
+      let entry;
+      try {
+        // Lighthouse must not inherit cache, storage or protocol state from an earlier run.
+        browser = await launchAuditBrowser(chromePath);
         const result = await lighthouse(
           new URL(route, origin).href,
           {
-            port: chrome.port,
+            port: browser.chrome.port,
             onlyCategories: categoryIds,
             output: ["json", "html"],
             logLevel: "error",
@@ -46,10 +66,10 @@ try {
         );
         if (!result?.lhr) throw new Error(`No Lighthouse report for ${route}`);
         const { lhr, report } = result;
-        const stem = `${route === "/" ? "home" : route.replaceAll("/", "-").replace(/^-|-$/g, "")}-${device}-${run}`;
+        const stem = `${routeName(route)}-${device}-${run}`;
         await writeFile(path.join(output, `${stem}.json`), report[0]);
         await writeFile(path.join(output, `${stem}.html`), report[1]);
-        const entry = {
+        entry = {
           route,
           device,
           run,
@@ -84,6 +104,8 @@ try {
               value: audit.displayValue,
             })),
           runtimeError: lhr.runtimeError || null,
+          runWarnings: lhr.runWarnings || [],
+          cleanupWarning: null,
           environment: lhr.environment,
           configSettings: {
             formFactor: lhr.configSettings.formFactor,
@@ -102,15 +124,29 @@ try {
             metrics: entry.metrics,
           }),
         );
+      } catch (error) {
+        failures.push({ route, device, run, error: String(error) });
+        console.error(
+          `Lighthouse failed for ${route} (${device}, run ${run}): ${error}`,
+        );
+      } finally {
+        if (browser) {
+          let warning;
+          try {
+            warning = await browser.close();
+          } catch (error) {
+            warning = String(error);
+          }
+          if (warning) {
+            cleanupWarnings.push({ route, device, run, warning });
+            if (entry) entry.cleanupWarning = warning;
+            console.warn(
+              `Chrome cleanup warning for ${route} (${device}, run ${run}); measurement retained.`,
+            );
+          }
+        }
       }
     }
-  }
-} finally {
-  cleanupWarning = await browser.close();
-  if (cleanupWarning) {
-    console.warn(
-      "Chrome temporary-profile cleanup failed; completed measurements are retained.",
-    );
   }
 }
 
@@ -136,9 +172,20 @@ const summary = {
   platform: `${os.platform()} ${os.release()}`,
   cpu: os.cpus()[0]?.model,
   node: process.version,
+  browserIsolation: "Fresh browser and temporary profile per measurement",
+  filters: { route: routeFilter || null, device: deviceFilter || null },
   groups,
   measurements,
-  cleanupWarning,
+  failures,
+  cleanupWarnings,
+  cleanupWarning: cleanupWarnings.length
+    ? cleanupWarnings
+        .map(
+          (item) =>
+            `${item.route} ${item.device} run ${item.run}: ${item.warning}`,
+        )
+        .join("\n")
+    : null,
 };
 await writeFile(
   path.join(output, "summary.json"),
@@ -147,6 +194,8 @@ await writeFile(
 console.log(`Saved actual reports to ${output}`);
 console.log(JSON.stringify(groups, null, 2));
 if (
+  failures.length ||
+  measurements.some((measurement) => measurement.runtimeError) ||
   groups.some((group) =>
     Object.values(group.medianScores).some((score) => score < 90),
   )

@@ -63,7 +63,7 @@ For Lighthouse, leave `npm start` running in one terminal and use another:
 npm run audit
 ```
 
-The audit records Lighthouse JSON and HTML under `artifacts/lighthouse/`, including environment and throttling settings. It runs all four localized home pages and the English PATHY case study three times each on mobile and desktop (30 measurements) and reports median category scores. It exits unsuccessfully when any measured group is below 90. A Windows temporary-profile cleanup warning is recorded separately without discarding completed measurements. See `QA-REPORT.md` for actual results and limitations from this delivery. Automated accessibility checks complement the visual and keyboard review; they do not establish complete WCAG conformance.
+The audit records Lighthouse JSON and HTML under `artifacts/lighthouse/`, including environment and throttling settings. It runs all four localized home pages and the English PATHY case study three times each on mobile and desktop (30 measurements) and reports median category scores. Each measurement uses a fresh browser and temporary profile; cleanup warnings are retained per run. It exits unsuccessfully when a measurement fails or any measured group is below 90. To recheck only one route/device, run `npm run audit -- /projects/pathy/ desktop`; its three measurements are saved separately in `artifacts/lighthouse/recheck-projects-pathy-desktop/`, preserving the original full audit. See `QA-REPORT.md` for actual results and limitations from this delivery. Automated accessibility checks complement the visual and keyboard review; they do not establish complete WCAG conformance.
 
 ## Deploy
 

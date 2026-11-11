@@ -2,30 +2,30 @@
 > sami-abu-raaed-portfolio@1.0.0 test:unit
 > node --test tests/*.test.mjs
 
-✔ unconfigured preview has no résumé or publishable origin (0.9629ms)
-✔ HTTPS origin is normalized and an optional local PDF can be enabled (0.6742ms)
-✔ reject unsafe or ambiguous site origins without exposing their values (0.3916ms)
-✔ résumé accepts HTTPS, rejects script URLs, protocol-relative paths and traversal (0.2356ms)
-✔ release preflight requires an origin and validates local PDFs before building (299.7418ms)
-✔ static headers give immutable assets one cache policy and each HTML route its own CSP (14.4237ms)
-✔ preparation fails explicitly when an export is missing or exceeds host header limits (57.0149ms)
-✔ GET serves the export and HEAD preserves representation headers without a body (41.3734ms)
-✔ gzip is negotiated, round-trips UTF-8, and HEAD declares the same encoding (8.4433ms)
-✔ gzip exclusions, wildcard precedence, identity preference, and unacceptable encodings are respected (13.3244ms)
-✔ binary fonts retain MIME and identity bytes; versioned Next assets alone are immutable (5.808ms)
-✔ directory redirects preserve the query, encode the path, and stay on the same origin (6.3305ms)
-✔ malformed escapes, control characters, Windows streams, and backslashes are rejected (5.0328ms)
-✔ raw and encoded parent traversal never resolve outside the public directory (3.2486ms)
-✔ hidden paths and private/non-public file types are not exposed (11.6286ms)
-✔ directory symlinks cannot escape the root or alias a hidden directory (4.8175ms)
-✔ custom 404 uses HTML security headers and HEAD never transmits its body (3.8624ms)
-✔ only GET and HEAD are accepted (3.3193ms)
-✔ CSP authorizes exact Next inline text without unsafe inline scripts and blocks unused capabilities (2.0797ms)
-✔ CSP hashes follow HTML newline normalization and handle quoted greater-than attributes (0.1937ms)
-✔ CSP is regenerated for changed HTML rather than using stale script hashes (2.3742ms)
-✔ aborting a large response leaves the server usable (5.6933ms)
-✔ startup refuses missing exports and invalid ports with actionable errors (1.0069ms)
-✔ CLI reports an occupied port and exits unsuccessfully (88.6094ms)
+✔ unconfigured preview has no résumé or publishable origin (0.7865ms)
+✔ HTTPS origin is normalized and an optional local PDF can be enabled (0.52ms)
+✔ reject unsafe or ambiguous site origins without exposing their values (0.3156ms)
+✔ résumé accepts HTTPS, rejects script URLs, protocol-relative paths and traversal (0.1891ms)
+✔ release preflight requires an origin and validates local PDFs before building (235.8809ms)
+✔ static headers give immutable assets one cache policy and each HTML route its own CSP (11.4849ms)
+✔ preparation fails explicitly when an export is missing or exceeds host header limits (43.0353ms)
+✔ GET serves the export and HEAD preserves representation headers without a body (33.4547ms)
+✔ gzip is negotiated, round-trips UTF-8, and HEAD declares the same encoding (6.3045ms)
+✔ gzip exclusions, wildcard precedence, identity preference, and unacceptable encodings are respected (9.938ms)
+✔ binary fonts retain MIME and identity bytes; versioned Next assets alone are immutable (4.7358ms)
+✔ directory redirects preserve the query, encode the path, and stay on the same origin (5.1003ms)
+✔ malformed escapes, control characters, Windows streams, and backslashes are rejected (4.4524ms)
+✔ raw and encoded parent traversal never resolve outside the public directory (2.7851ms)
+✔ hidden paths and private/non-public file types are not exposed (8.861ms)
+✔ directory symlinks cannot escape the root or alias a hidden directory (3.4844ms)
+✔ custom 404 uses HTML security headers and HEAD never transmits its body (2.4582ms)
+✔ only GET and HEAD are accepted (2.4676ms)
+✔ CSP authorizes exact Next inline text without unsafe inline scripts and blocks unused capabilities (1.6006ms)
+✔ CSP hashes follow HTML newline normalization and handle quoted greater-than attributes (0.1148ms)
+✔ CSP is regenerated for changed HTML rather than using stale script hashes (1.5748ms)
+✔ aborting a large response leaves the server usable (4.0579ms)
+✔ startup refuses missing exports and invalid ports with actionable errors (0.7156ms)
+✔ CLI reports an occupied port and exits unsuccessfully (67.1113ms)
 ℹ tests 24
 ℹ suites 0
 ℹ pass 24
@@ -33,4 +33,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 359.9504
+ℹ duration_ms 319.6647

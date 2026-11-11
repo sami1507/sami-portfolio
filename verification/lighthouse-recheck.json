@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-11T22:00:14.303Z",
+  "origin": "http://127.0.0.1:3000",
+  "build": "Next.js production static export; npm run build && npm start",
+  "platform": "win32 10.0.26300",
+  "cpu": "Intel(R) Core(TM) i7-14700F",
+  "node": "v24.19.0",
+  "browserIsolation": "Fresh browser and temporary profile per measurement",
+  "filters": {
+    "route": "/projects/pathy/",
+    "device": "desktop"
+  },
+  "groups": [
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "runs": 3,
+      "medianScores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      }
+    }
+  ],
+  "measurements": [
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "run": 1,
+      "fetchTime": "2026-11-11T21:58:35.050Z",
+      "lighthouseVersion": "13.6.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": "0.2 s",
+        "largest-contentful-paint": "0.2 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0",
+        "speed-index": "0.3 s"
+      },
+      "failedAudits": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 59 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "value": "Est savings of 139 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 12 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0.5
+        }
+      ],
+      "runtimeError": null,
+      "runWarnings": [],
+      "cleanupWarning": "Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained.",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+        "benchmarkIndex": 3092,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "configSettings": {
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "run": 2,
+      "fetchTime": "2026-11-11T21:59:29.953Z",
+      "lighthouseVersion": "13.6.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": "0.2 s",
+        "largest-contentful-paint": "0.2 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0",
+        "speed-index": "0.2 s"
+      },
+      "failedAudits": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 59 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "value": "Est savings of 139 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 12 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0.5
+        }
+      ],
+      "runtimeError": null,
+      "runWarnings": [],
+      "cleanupWarning": "Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained.",
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+        "benchmarkIndex": 3535.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "configSettings": {
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "run": 3,
+      "fetchTime": "2026-11-11T21:59:53.757Z",
+      "lighthouseVersion": "13.6.0",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "first-contentful-paint": "0.2 s",
+        "largest-contentful-paint": "0.2 s",
+        "total-blocking-time": "0 ms",
+        "cumulative-layout-shift": "0",
+        "speed-index": "0.3 s"
+      },
+      "failedAudits": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 59 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "value": "Est savings of 139 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "value": "Est savings of 12 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0.5
+        }
+      ],
+      "runtimeError": null,
+      "runWarnings": [],
+      "cleanupWarning": null,
+      "environment": {
+        "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36",
+        "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+        "benchmarkIndex": 3761.5,
+        "credits": {
+          "axe-core": "4.14.0"
+        }
+      },
+      "configSettings": {
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "cleanupWarnings": [
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "run": 1,
+      "warning": "Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained."
+    },
+    {
+      "route": "/projects/pathy/",
+      "device": "desktop",
+      "run": 2,
+      "warning": "Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained."
+    }
+  ],
+  "cleanupWarning": "/projects/pathy/ desktop run 1: Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained.\n/projects/pathy/ desktop run 2: Timed out after 15000 ms waiting for the owned Chrome process to close; its temporary profile was retained."
+}

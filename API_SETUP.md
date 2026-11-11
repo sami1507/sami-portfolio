@@ -88,7 +88,7 @@ Run QA commands from another terminal with the relevant environment values set t
 ## Static hosting
 
 1. Choose the intended hosting project/account, final HTTPS origin, and audience. Set `NEXT_PUBLIC_SITE_URL` in the build environment and configure the optional real résumé.
-2. Use the `portfolio` directory as the project root when deploying from the parent repository. Install dependencies with `npm ci` and build with `npm run build:release`.
+2. Use the repository root for the standalone `sami-portfolio` repository, or the `portfolio` directory only when building from the parent Android repository. Install dependencies with `npm ci` and build with `npm run build:release`.
 3. Publish **only `out/`** as the static site. Do not expose the source checkout, environment files, dependency folders, or QA artifacts as the web root.
 4. Configure directory index handling so `/ar/`, `/he/`, `/de/`, and project paths serve their respective `index.html`. Serve the exported `404.html` with an actual HTTP 404 status for missing pages. Avoid a blanket rewrite of every missing URL to the home page.
 5. Enable HTTPS. Carry over the generated hosting-header configuration where the provider supports it; adapt headers for other providers using `scripts/security-headers.mjs`. The local server's response headers do not automatically configure an unrelated static host. Do not assume a provider applies unsupported header files.

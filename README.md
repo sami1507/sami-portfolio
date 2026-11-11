@@ -55,6 +55,8 @@ npm run test:e2e
 
 `npm run verify` runs those checks in order. On a clean machine install the test browser first with `npx playwright install chromium` (Linux CI uses `--with-deps`). The GitHub Actions workflow checks every push/PR with Node 24 and uploads browser evidence; it does not deploy. Unit tests cover public configuration and actual HTTP server security/semantics. No secrets are needed by CI.
 
+Browser tests automatically read `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_RESUME_URL` from the production environment files in order: `.env.production.local`, `.env.local`, `.env.production`, then `.env`. Existing environment values, including an explicitly empty value, take precedence. Other environment-file keys are not loaded into the test process; server and browser-tool overrides remain command-line environment settings. Rebuild after changing these public settings so the exported pages and tests agree.
+
 Browser tools use `CHROME_PATH` when set, installed Chrome on Windows when available, or Playwright Chromium. Tests start the static preview unless one is already running; ensure an existing server serves the current build. Coverage includes 360, 390, 768 and 1440 px in all four languages, case studies, every language-switch pair, English default, keyboard/menu focus, images, clipboard denial/unavailability/repeated clicks, no-JavaScript navigation/contact, local assets/fonts, metadata, true 404s and axe checks. Actual captures are written to `artifacts/screenshots/`.
 
 For Lighthouse, leave `npm start` running in one terminal and use another:

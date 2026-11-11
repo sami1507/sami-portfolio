@@ -2,35 +2,36 @@
 > sami-abu-raaed-portfolio@1.0.0 test:unit
 > node --test tests/*.test.mjs
 
-✔ unconfigured preview has no résumé or publishable origin (0.7865ms)
-✔ HTTPS origin is normalized and an optional local PDF can be enabled (0.52ms)
-✔ reject unsafe or ambiguous site origins without exposing their values (0.3156ms)
-✔ résumé accepts HTTPS, rejects script URLs, protocol-relative paths and traversal (0.1891ms)
-✔ release preflight requires an origin and validates local PDFs before building (235.8809ms)
-✔ static headers give immutable assets one cache policy and each HTML route its own CSP (11.4849ms)
-✔ preparation fails explicitly when an export is missing or exceeds host header limits (43.0353ms)
-✔ GET serves the export and HEAD preserves representation headers without a body (33.4547ms)
-✔ gzip is negotiated, round-trips UTF-8, and HEAD declares the same encoding (6.3045ms)
-✔ gzip exclusions, wildcard precedence, identity preference, and unacceptable encodings are respected (9.938ms)
-✔ binary fonts retain MIME and identity bytes; versioned Next assets alone are immutable (4.7358ms)
-✔ directory redirects preserve the query, encode the path, and stay on the same origin (5.1003ms)
-✔ malformed escapes, control characters, Windows streams, and backslashes are rejected (4.4524ms)
-✔ raw and encoded parent traversal never resolve outside the public directory (2.7851ms)
-✔ hidden paths and private/non-public file types are not exposed (8.861ms)
-✔ directory symlinks cannot escape the root or alias a hidden directory (3.4844ms)
-✔ custom 404 uses HTML security headers and HEAD never transmits its body (2.4582ms)
-✔ only GET and HEAD are accepted (2.4676ms)
-✔ CSP authorizes exact Next inline text without unsafe inline scripts and blocks unused capabilities (1.6006ms)
-✔ CSP hashes follow HTML newline normalization and handle quoted greater-than attributes (0.1148ms)
-✔ CSP is regenerated for changed HTML rather than using stale script hashes (1.5748ms)
-✔ aborting a large response leaves the server usable (4.0579ms)
-✔ startup refuses missing exports and invalid ports with actionable errors (0.7156ms)
-✔ CLI reports an occupied port and exits unsuccessfully (67.1113ms)
-ℹ tests 24
+✔ browser tests load only public production settings in order while existing values win (8.5275ms)
+✔ unconfigured preview has no résumé or publishable origin (0.2099ms)
+✔ HTTPS origin is normalized and an optional local PDF can be enabled (0.1418ms)
+✔ reject unsafe or ambiguous site origins without exposing their values (0.3041ms)
+✔ résumé accepts HTTPS, rejects script URLs, protocol-relative paths and traversal (0.2004ms)
+✔ release preflight requires an origin and validates local PDFs before building (262.6418ms)
+✔ static headers give immutable assets one cache policy and each HTML route its own CSP (11.3689ms)
+✔ preparation fails explicitly when an export is missing or exceeds host header limits (39.9033ms)
+✔ GET serves the export and HEAD preserves representation headers without a body (32.202ms)
+✔ gzip is negotiated, round-trips UTF-8, and HEAD declares the same encoding (6.0705ms)
+✔ gzip exclusions, wildcard precedence, identity preference, and unacceptable encodings are respected (9.6803ms)
+✔ binary fonts retain MIME and identity bytes; versioned Next assets alone are immutable (4.4181ms)
+✔ directory redirects preserve the query, encode the path, and stay on the same origin (4.9201ms)
+✔ malformed escapes, control characters, Windows streams, and backslashes are rejected (4.5556ms)
+✔ raw and encoded parent traversal never resolve outside the public directory (2.7747ms)
+✔ hidden paths and private/non-public file types are not exposed (8.4489ms)
+✔ directory symlinks cannot escape the root or alias a hidden directory (3.2733ms)
+✔ custom 404 uses HTML security headers and HEAD never transmits its body (2.4621ms)
+✔ only GET and HEAD are accepted (2.4191ms)
+✔ CSP authorizes exact Next inline text without unsafe inline scripts and blocks unused capabilities (1.4629ms)
+✔ CSP hashes follow HTML newline normalization and handle quoted greater-than attributes (0.1154ms)
+✔ CSP is regenerated for changed HTML rather than using stale script hashes (1.5199ms)
+✔ aborting a large response leaves the server usable (4.3741ms)
+✔ startup refuses missing exports and invalid ports with actionable errors (0.7498ms)
+✔ CLI reports an occupied port and exits unsuccessfully (66.7658ms)
+ℹ tests 25
 ℹ suites 0
-ℹ pass 24
+ℹ pass 25
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 319.6647
+ℹ duration_ms 324.3731

@@ -1,5 +1,8 @@
 import { defineConfig } from "@playwright/test";
 import { existsSync } from "node:fs";
+import { loadPublicTestEnv } from "./scripts/load-public-test-env.mjs";
+
+loadPublicTestEnv();
 
 const windowsChrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const executablePath =

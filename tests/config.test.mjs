@@ -1,11 +1,70 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readPublicSettings } from "../src/lib/public-settings.mjs";
+import { loadPublicTestEnv } from "../scripts/load-public-test-env.mjs";
 import { spawnSync } from "node:child_process";
 import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
+
+test("browser tests load only public production settings in order while existing values win", async () => {
+  const temporaryRoot = path.resolve(os.tmpdir());
+  const fixture = await mkdtemp(
+    path.join(temporaryRoot, "portfolio-test-env-"),
+  );
+  const files = [
+    ".env.production.local",
+    ".env.local",
+    ".env.production",
+    ".env",
+  ];
+  try {
+    for (const [index, file] of files.entries()) {
+      await writeFile(
+        path.join(fixture, file),
+        [
+          `NEXT_PUBLIC_SITE_URL="https://source-${index}.example"`,
+          `NEXT_PUBLIC_RESUME_URL='/source-${index}.pdf'`,
+          "PORT=9999",
+          "CHROME_PATH=/fixture/browser",
+          "API_KEY=fixture-private-value",
+        ].join("\n"),
+      );
+    }
+    const explicit = {
+      NEXT_PUBLIC_SITE_URL: "",
+      NEXT_PUBLIC_RESUME_URL: "https://existing.example/cv.pdf",
+      PORT: "4000",
+    };
+    loadPublicTestEnv(fixture, explicit);
+    assert.deepEqual(explicit, {
+      NEXT_PUBLIC_SITE_URL: "",
+      NEXT_PUBLIC_RESUME_URL: "https://existing.example/cv.pdf",
+      PORT: "4000",
+    });
+    for (const [index, file] of files.entries()) {
+      const environment = { PORT: "4000" };
+      loadPublicTestEnv(fixture, environment);
+      assert.deepEqual(environment, {
+        PORT: "4000",
+        NEXT_PUBLIC_SITE_URL: `https://source-${index}.example`,
+        NEXT_PUBLIC_RESUME_URL: `/source-${index}.pdf`,
+      });
+      await rm(path.join(fixture, file));
+    }
+    const missing = {};
+    loadPublicTestEnv(fixture, missing);
+    assert.deepEqual(missing, {});
+  } finally {
+    if (
+      path.dirname(path.resolve(fixture)) !== temporaryRoot ||
+      !path.basename(fixture).startsWith("portfolio-test-env-")
+    )
+      throw new Error("Fixture cleanup escaped its temporary root.");
+    await rm(fixture, { recursive: true, force: true });
+  }
+});
 
 test("unconfigured preview has no résumé or publishable origin", () => {
   assert.deepEqual(readPublicSettings(), {

@@ -4,15 +4,20 @@ import { launchAuditBrowser } from "./audit-browser.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
+import { existsSync } from "node:fs";
+import { chromium } from "@playwright/test";
 
 const origin = process.env.AUDIT_URL || "http://127.0.0.1:3000";
 const output = path.resolve("artifacts/lighthouse");
 const chromePath =
   process.env.CHROME_PATH ||
-  (process.platform === "win32"
+  (process.platform === "win32" &&
+  existsSync("C:/Program Files/Google/Chrome/Application/chrome.exe")
     ? "C:/Program Files/Google/Chrome/Application/chrome.exe"
-    : undefined);
-const repeat = Math.max(1, Number(process.env.AUDIT_RUNS || 3));
+    : chromium.executablePath());
+const repeat = Number(process.env.AUDIT_RUNS || 3);
+if (!Number.isSafeInteger(repeat) || repeat < 1 || repeat > 10)
+  throw new Error("AUDIT_RUNS must be an integer from 1 to 10.");
 const categoryIds = ["performance", "accessibility", "best-practices", "seo"];
 await mkdir(output, { recursive: true });
 const readiness = await fetch(origin);

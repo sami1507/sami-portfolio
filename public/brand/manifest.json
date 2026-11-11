@@ -1,0 +1,280 @@
+{
+  "source": "src/components/Icons.tsx#Mark",
+  "approvedMarkPath": "M29 10H16a6 6 0 0 0 0 12h8a4 4 0 1 1 0 8H11M20 30 30 10l9 20M26 24h10",
+  "renderer": "sharp 0.35.5 / libvips 8.18.7",
+  "logoText": "Custom vector paths; no font dependencies",
+  "palette": {
+    "charcoal": "#0C1012",
+    "ivory": "#F4F1E9",
+    "secondary": "#A1ABA9",
+    "lime": "#B8F16C",
+    "success": "#B8F16C",
+    "warning": "#F0CA72",
+    "error": "#FFAEA5"
+  },
+  "contrastOnCharcoal": {
+    "ivory": 16.94,
+    "secondary": 8.11,
+    "lime": 14.42,
+    "success": 14.42,
+    "warning": 12.2,
+    "error": 10.79
+  },
+  "assets": [
+    {
+      "file": "sami-lockup-on-dark.svg",
+      "format": "svg",
+      "sha256": "c0980e54aa81d42dff2bd6679c37e5ddb2cb72c880a833c1e975932fe1cb25c0"
+    },
+    {
+      "file": "sami-lockup-on-dark.png",
+      "format": "png",
+      "width": 1200,
+      "height": 400,
+      "hasAlpha": true,
+      "transparentPixels": 444889,
+      "visiblePixels": 35111,
+      "sha256": "9891aeef018d7f5fe0b98f1a86f1a17cd1290fb5429dd02710574108e2e29b98"
+    },
+    {
+      "file": "sami-icon-on-dark.svg",
+      "format": "svg",
+      "sha256": "ac2505823f9424c1e210c3bd54ee0632c9e9b843f6fe375e13c0b5563a769530"
+    },
+    {
+      "file": "sami-icon-on-dark.png",
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "transparentPixels": 230988,
+      "visiblePixels": 31156,
+      "sha256": "735caed57cc092ff05f2c6259228cb314e11513b10735012ca84124cae6a14be"
+    },
+    {
+      "file": "sami-icon-on-dark-256.png",
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "transparentPixels": 57375,
+      "visiblePixels": 8161,
+      "sha256": "9863ea8becbe594e62084104a31db684316374a67bcf73298756b86c742ceb53"
+    },
+    {
+      "file": "sami-icon-on-dark-64.png",
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3441,
+      "visiblePixels": 655,
+      "sha256": "0fd1386c49633e95514d77af5037a94885e7f2ce6e43103ea1f90b18e1c5c7ad"
+    },
+    {
+      "file": "sami-icon-on-dark-32.png",
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 812,
+      "visiblePixels": 212,
+      "sha256": "931c7c688c74c7500484b4b348761e708c142e37990a34ebbf49aeafe671ff52"
+    },
+    {
+      "file": "sami-lockup-on-light.svg",
+      "format": "svg",
+      "sha256": "55ce29d73c70cbb3258a83875211715879ef7ddb09eb570f7cf5de416d0a6a35"
+    },
+    {
+      "file": "sami-lockup-on-light.png",
+      "format": "png",
+      "width": 1200,
+      "height": 400,
+      "hasAlpha": true,
+      "transparentPixels": 444889,
+      "visiblePixels": 35111,
+      "sha256": "19c020b5702716252578ffbf62c2323db8e2ee40d66aa33ba5d0b9c53316cea0"
+    },
+    {
+      "file": "sami-icon-on-light.svg",
+      "format": "svg",
+      "sha256": "122463f9a6a69f0ccc9026dcc416e281d7866303046c4c39398c748c06edd7db"
+    },
+    {
+      "file": "sami-icon-on-light.png",
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "transparentPixels": 230988,
+      "visiblePixels": 31156,
+      "sha256": "42503b6510cb1af87b123eab7a9a44f521277c0947f6734561fb1b3dcd0a6bc8"
+    },
+    {
+      "file": "sami-icon-on-light-256.png",
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "transparentPixels": 57375,
+      "visiblePixels": 8161,
+      "sha256": "85ea45b4e808505f10486ee6207fb206113624481fdc60172988f96ee9c444ec"
+    },
+    {
+      "file": "sami-icon-on-light-64.png",
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3441,
+      "visiblePixels": 655,
+      "sha256": "51cf7f32059ee88aba3117d25dd1c5797ce2b9ffdc4c876a1c4ccdebd8712852"
+    },
+    {
+      "file": "sami-icon-on-light-32.png",
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 812,
+      "visiblePixels": 212,
+      "sha256": "faac2040a147a487d2db18c0767b007fc38e8cedf174211cab7c0d558eb84418"
+    },
+    {
+      "file": "sami-lockup-mono-white.svg",
+      "format": "svg",
+      "sha256": "7d6a192ede630c711ad2db1113b40373abf20f3526f408b9d683e1be995c0a74"
+    },
+    {
+      "file": "sami-lockup-mono-white.png",
+      "format": "png",
+      "width": 1200,
+      "height": 400,
+      "hasAlpha": true,
+      "transparentPixels": 444889,
+      "visiblePixels": 35111,
+      "sha256": "68207c7a702bec79a89f51f954cac46c74072abd2bcb14868213dc1b154dcb21"
+    },
+    {
+      "file": "sami-icon-mono-white.svg",
+      "format": "svg",
+      "sha256": "086ad9b16924180e3dee93c11eb8f94fb6d44f950a1fcbf9ed824f5eef957134"
+    },
+    {
+      "file": "sami-icon-mono-white.png",
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "transparentPixels": 230988,
+      "visiblePixels": 31156,
+      "sha256": "009f43516adc65332b187065f71cccb38f43b42ae29dec9352f723abec4e0c8f"
+    },
+    {
+      "file": "sami-icon-mono-white-256.png",
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "transparentPixels": 57375,
+      "visiblePixels": 8161,
+      "sha256": "4901fa7f939aff706042c9cbdded54a7d0a48834a42cb993c43ff234fcbac6a5"
+    },
+    {
+      "file": "sami-icon-mono-white-64.png",
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3441,
+      "visiblePixels": 655,
+      "sha256": "b75e006569ad5dc99c74cb43823c3f6bbb910989bc2d7f1ea6a4032e413761ad"
+    },
+    {
+      "file": "sami-icon-mono-white-32.png",
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 812,
+      "visiblePixels": 212,
+      "sha256": "c206dd6bd92f6611cc8714abff852a3995a1df11d8871cc56aa06361b5b303b2"
+    },
+    {
+      "file": "sami-lockup-mono-black.svg",
+      "format": "svg",
+      "sha256": "4d32b85ed81155f798ba3c4e5410525b356da492d0dfd320e7c21b13894ab9ce"
+    },
+    {
+      "file": "sami-lockup-mono-black.png",
+      "format": "png",
+      "width": 1200,
+      "height": 400,
+      "hasAlpha": true,
+      "transparentPixels": 444889,
+      "visiblePixels": 35111,
+      "sha256": "ef53a7918eeef0b867c98bdb9dd82fc871179cedb827a39a1f16388753a9108c"
+    },
+    {
+      "file": "sami-icon-mono-black.svg",
+      "format": "svg",
+      "sha256": "20c53d4cec66ce300ca3a7974e070b6184727c42c30076c80c91074ac2d95ddc"
+    },
+    {
+      "file": "sami-icon-mono-black.png",
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "transparentPixels": 230988,
+      "visiblePixels": 31156,
+      "sha256": "0efc0efa4ff92158376c6082d40bbe21fca430c172cb390a6b34c2fcb4c265a9"
+    },
+    {
+      "file": "sami-icon-mono-black-256.png",
+      "format": "png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "transparentPixels": 57375,
+      "visiblePixels": 8161,
+      "sha256": "6708d1b82a5edbd3738809a24e2a180a84d81d815d011478db62435ee9951dee"
+    },
+    {
+      "file": "sami-icon-mono-black-64.png",
+      "format": "png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3441,
+      "visiblePixels": 655,
+      "sha256": "41a56911d62cbf6c54d8fbc91b5d9ce986062780cc1885e417a0a992e912f1fb"
+    },
+    {
+      "file": "sami-icon-mono-black-32.png",
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 812,
+      "visiblePixels": 212,
+      "sha256": "b731e4f494ae3d1b12be6297626b08dc09a7ac0eb2d29181f096f5416528c1c8"
+    },
+    {
+      "file": "brand-contact-sheet.svg",
+      "format": "svg",
+      "sha256": "6c9f8799866c96e6dcd37e61b9a8a1b2eb43925f778e9cd1466b9c6260e5219d"
+    },
+    {
+      "file": "brand-contact-sheet.png",
+      "format": "png",
+      "width": 1440,
+      "height": 1240,
+      "hasAlpha": true,
+      "transparentPixels": 0,
+      "visiblePixels": 1785600,
+      "sha256": "20e0f185523bb9b5fe9537e527b375e51a860bf95808388071a2c9827c1553ba"
+    }
+  ]
+}

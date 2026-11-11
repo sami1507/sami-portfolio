@@ -1,9 +1,17 @@
 import { chromium } from "@playwright/test";
 import sharp from "sharp";
 import { mkdir, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+const windowsChrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const executablePath =
+  process.env.CHROME_PATH ||
+  (process.platform === "win32" && existsSync(windowsChrome)
+    ? windowsChrome
+    : undefined);
 await mkdir("artifacts/source-captures", { recursive: true });
+await mkdir("public/images", { recursive: true });
 const browser = await chromium.launch({
-  executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  executablePath,
   headless: true,
 });
 const captures = [];

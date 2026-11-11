@@ -1,16 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { copy, profile, type Locale } from "@/data/site";
 import { Arrow } from "./Icons";
 export function Contact({ locale }: { locale: Locale }) {
   const t = copy[locale];
   const [message, setMessage] = useState("");
+  const [state, setState] = useState<"idle" | "copying" | "success" | "error">(
+    "idle",
+  );
+  const pending = useRef(false);
   async function copyAddress() {
+    if (pending.current) return;
+    pending.current = true;
+    setState("copying");
+    setMessage("");
     try {
       await navigator.clipboard.writeText(profile.email);
       setMessage(t.copied);
+      setState("success");
     } catch {
       setMessage(t.copyError);
+      setState("error");
+    } finally {
+      pending.current = false;
     }
   }
   return (
@@ -44,7 +56,9 @@ export function Contact({ locale }: { locale: Locale }) {
               <button
                 data-testid="copy-email"
                 onClick={copyAddress}
-                aria-label={t.copyEmail}
+                aria-label={state === "copying" ? t.copying : t.copyEmail}
+                disabled={state === "copying"}
+                aria-busy={state === "copying"}
               >
                 <svg
                   width="18"
@@ -68,10 +82,15 @@ export function Contact({ locale }: { locale: Locale }) {
                     strokeWidth="1.5"
                   />
                 </svg>
-                {t.copyEmail}
+                {state === "copying" ? t.copying : t.copyEmail}
               </button>
             </div>
-            <p className="copy-status" role="status" aria-live="polite">
+            <p
+              className="copy-status"
+              data-state={state}
+              role="status"
+              aria-live="polite"
+            >
               {message}
             </p>
             <div className="social-links">

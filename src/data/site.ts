@@ -1,3 +1,8 @@
+import { readPublicSettings } from "@/lib/public-settings.mjs";
+const settings = readPublicSettings({
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  resumeUrl: process.env.NEXT_PUBLIC_RESUME_URL,
+});
 export const locales = ["en", "ar", "he", "de"] as const;
 export type Locale = (typeof locales)[number];
 export const localeInfo = {
@@ -22,10 +27,8 @@ export const profile = {
   email: "samiaburaed42@gmail.com",
   github: "https://github.com/sami1507",
   linkedin: "https://www.linkedin.com/in/sami-abu-raaed-89277b307/",
-  siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site",
-  resume: null as string | null,
+  siteUrl: settings.siteUrl,
+  resume: settings.resume,
 };
 export const homePath = (locale: Locale) =>
   locale === "en" ? "/" : `/${locale}/`;
@@ -99,6 +102,7 @@ export const copy = {
     emailAction: "Send me an email",
     copyEmail: "Copy email address",
     copied: "Email copied.",
+    copying: "Copying…",
     copyError:
       "Could not copy. You can select the email address or use the email link.",
     footer: "Thoughtfully designed. Carefully built.",
@@ -178,6 +182,7 @@ export const copy = {
     emailAction: "راسلني عبر البريد",
     copyEmail: "انسخ البريد الإلكتروني",
     copied: "تم نسخ البريد الإلكتروني.",
+    copying: "جارٍ النسخ…",
     copyError: "تعذّر النسخ. يمكنك تحديد البريد أو استخدام رابط المراسلة.",
     footer: "تصميم مدروس. وتنفيذ بعناية.",
     top: "إلى أعلى الصفحة",
@@ -256,6 +261,7 @@ export const copy = {
     emailAction: "שלחו לי אימייל",
     copyEmail: "העתקת כתובת האימייל",
     copied: "כתובת האימייל הועתקה.",
+    copying: "מעתיק…",
     copyError:
       "ההעתקה נכשלה. אפשר לסמן את כתובת האימייל או להשתמש בקישור לשליחת הודעה.",
     footer: "עיצוב מחושב. פיתוח מוקפד.",
@@ -336,6 +342,7 @@ export const copy = {
     emailAction: "E-Mail schreiben",
     copyEmail: "E-Mail-Adresse kopieren",
     copied: "E-Mail-Adresse kopiert.",
+    copying: "Wird kopiert…",
     copyError:
       "Kopieren fehlgeschlagen. Du kannst die E-Mail-Adresse markieren oder den E-Mail-Link verwenden.",
     footer: "Durchdacht gestaltet. Sorgfältig entwickelt.",

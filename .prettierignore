@@ -1,0 +1,15 @@
+node_modules/
+.next/
+next/
+out/
+artifacts/
+deliverables/
+test-results/
+playwright-report/
+.sites-runtime/
+.openai/
+public/
+package-lock.json
+next-env.d.ts
+*.tsbuildinfo
+*.tar.gz

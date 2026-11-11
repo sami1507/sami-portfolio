@@ -17,23 +17,28 @@ export function pageMetadata(locale: Locale, project?: Project): Metadata {
   const description = project ? project.summary[locale] : text.metaDescription;
   const path = project ? projectPath(locale, project.slug) : homePath(locale);
   return {
-    metadataBase: new URL(profile.siteUrl),
+    metadataBase: new URL(profile.siteUrl || "http://localhost:3000"),
+    robots: { index: Boolean(profile.siteUrl), follow: true },
     title,
     description,
     applicationName: "Sami Abu Raaed",
     authors: [{ name: profile.name, url: profile.github }],
-    alternates: {
-      canonical: path,
-      languages: {
-        ...Object.fromEntries(
-          locales.map((language) => [
-            language,
-            project ? projectPath(language, project.slug) : homePath(language),
-          ]),
-        ),
-        "x-default": project ? projectPath("en", project.slug) : "/",
-      },
-    },
+    alternates: profile.siteUrl
+      ? {
+          canonical: path,
+          languages: {
+            ...Object.fromEntries(
+              locales.map((language) => [
+                language,
+                project
+                  ? projectPath(language, project.slug)
+                  : homePath(language),
+              ]),
+            ),
+            "x-default": project ? projectPath("en", project.slug) : "/",
+          },
+        }
+      : undefined,
     openGraph: {
       type: "website",
       title,

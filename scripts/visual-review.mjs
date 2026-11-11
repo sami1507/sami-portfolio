@@ -1,10 +1,18 @@
 import { chromium } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+const windowsChrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const executablePath =
+  process.env.CHROME_PATH ||
+  (process.platform === "win32" && existsSync(windowsChrome)
+    ? windowsChrome
+    : undefined);
+const baseURL =
+  process.env.PLAYWRIGHT_BASE_URL ||
+  `http://127.0.0.1:${process.env.PORT || "3000"}`;
 await mkdir("artifacts/screenshots", { recursive: true });
 const browser = await chromium.launch({
-  executablePath:
-    process.env.CHROME_PATH ||
-    "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  executablePath,
   headless: true,
 });
 try {
@@ -23,7 +31,7 @@ try {
       deviceScaleFactor: 1,
     });
     await page.goto(
-      `http://127.0.0.1:3000/${locale === "en" ? "" : `${locale}/`}`,
+      new URL(locale === "en" ? "/" : `/${locale}/`, baseURL).href,
       {
         waitUntil: "networkidle",
       },

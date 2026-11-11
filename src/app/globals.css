@@ -52,11 +52,24 @@
   --ink: #f4f1e9;
   --muted: #a1aba9;
   --accent: #b8f16c;
+  --success: #b8f16c;
+  --warning: #f0ca72;
+  --error: #ffaea5;
+  --success-on-accent: #193a27;
+  --error-on-accent: #6b1c17;
   --line: #2c3637;
   --font: "Manrope Variable", sans-serif;
   --arabic: "IBM Plex Sans Arabic", "Manrope Variable", sans-serif;
   --hebrew: "Heebo Variable", "Manrope Variable", sans-serif;
   --radius: 8px;
+  --radius-small: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --shadow-menu: 0 12px 36px #0005;
   --ease: cubic-bezier(0.2, 0.65, 0.3, 1);
   --duration: 220ms;
   --space: clamp(22px, 4.45vw, 80px);
@@ -182,6 +195,16 @@ html[dir="rtl"] h2 {
 }
 button:disabled {
   cursor: default;
+  opacity: 0.65;
+}
+button[aria-busy="true"] {
+  cursor: progress;
+}
+.copy-status[data-state="error"] {
+  color: var(--error-on-accent);
+}
+.copy-status[data-state="success"] {
+  color: var(--success-on-accent);
 }
 .container {
   width: min(1280px, calc(100% - var(--space) * 2));
@@ -313,7 +336,7 @@ a:hover > .round-arrow .arrow {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 12px 36px #0005;
+  box-shadow: var(--shadow-menu);
 }
 .language-options a {
   display: flex;

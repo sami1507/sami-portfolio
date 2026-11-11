@@ -1,0 +1,13 @@
+node_modules/
+.next/
+next/
+out/
+.sites-runtime/
+artifacts/
+deliverables/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.env*
+!.env.example
+*.tar.gz

@@ -714,10 +714,6 @@ a:hover > .round-arrow .arrow {
 .hero-visual .phone-front {
   z-index: 2;
 }
-.project-visual.travel-visual .browser-window img {
-  aspect-ratio: 1440/700;
-  object-fit: contain;
-}
 .section-heading {
   display: flex;
   align-items: flex-end;
@@ -867,11 +863,13 @@ a:hover > .round-arrow .arrow {
   margin-top: 56px;
 }
 .browser-visual {
-  height: 336px;
+  /* Height follows the screenshot window so the caption band never covers it:
+     the bottom padding reserves the 48px caption plus the window's tilt (up to ~10px). */
+  height: auto;
   background: #d6e0e5;
   display: flex;
   align-items: center;
-  padding: 36px 28px 48px;
+  padding: 36px 28px 72px;
   color: #263740;
 }
 .browser-window {
@@ -886,7 +884,7 @@ a:hover > .round-arrow .arrow {
 }
 .browser-window img {
   width: 100%;
-  aspect-ratio: 1440/850;
+  aspect-ratio: 1440/700;
   object-fit: cover;
   object-position: top;
   display: block;
@@ -920,10 +918,15 @@ a:hover > .round-arrow .arrow {
 .taskflow-visual {
   background: #d4cbbb;
   color: #3e392e;
-  padding: 36px 28px 48px;
 }
 .taskflow-visual .browser-window {
   transform: rotate(2deg);
+}
+/* The capture ends in a footer line that the shared window ratio would slice
+   in half; a 3% zoom from the top edge crops just above it. */
+.taskflow-visual .browser-window img {
+  transform: scale(1.03);
+  transform-origin: 50% 0;
 }
 .visual-link:hover .browser-window {
   transform: rotate(0) translateY(-3px);
@@ -1345,8 +1348,8 @@ a:hover > .round-arrow .arrow {
   top: 100px;
 }
 .case-cover .browser-visual {
-  height: 600px;
-  padding: 55px 12%;
+  height: auto;
+  padding: 55px 12% 80px;
 }
 .case-cover .browser-window {
   max-width: 850px;
@@ -1553,7 +1556,6 @@ html[dir="rtl"] .back-link > span {
     gap: 30px;
   }
   .browser-visual {
-    height: 290px;
     padding-inline: 20px;
   }
   .case-title-row {
@@ -1702,12 +1704,7 @@ html[dir="rtl"] .back-link > span {
     gap: 25px;
   }
   .browser-visual {
-    height: 248px;
     padding-inline: 18px;
-  }
-  .browser-window img {
-    aspect-ratio: 1.35;
-    object-fit: cover;
   }
   .card-meta {
     flex-wrap: wrap;
@@ -1805,11 +1802,7 @@ html[dir="rtl"] .back-link > span {
     left: 30px;
   }
   .case-cover .browser-visual {
-    height: 440px;
     padding-inline: 9%;
-  }
-  .case-cover .browser-window img {
-    aspect-ratio: 1.65;
   }
   .case-section {
     gap: 35px;
@@ -2117,11 +2110,7 @@ html[dir="rtl"] .back-link > span {
     margin-top: 38px;
   }
   .browser-visual {
-    height: 290px;
-    padding: 35px 23px 48px;
-  }
-  .browser-window img {
-    aspect-ratio: 1.55;
+    padding: 35px 23px 70px;
   }
   .browser-bar {
     font-size: 5px;
@@ -2366,8 +2355,7 @@ html[dir="rtl"] .back-link > span {
     padding-inline: 15px;
   }
   .case-cover .browser-visual {
-    height: 280px;
-    padding: 35px 20px 45px;
+    padding: 35px 20px 70px;
   }
   .case-cover .browser-bar {
     height: 25px;
@@ -2501,7 +2489,6 @@ html[dir="rtl"] .back-link > span {
     font-size: 8px;
   }
   .browser-visual {
-    height: 265px;
     padding-inline: 18px;
   }
   .contact-actions {

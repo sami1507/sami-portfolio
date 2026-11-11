@@ -46,7 +46,7 @@ npm run build
 npm run test:e2e
 ```
 
-The Playwright configuration defaults to the installed Chrome executable on Windows. Set `CHROME_PATH` to your Chrome/Chromium executable on another system. The tests start the production preview if it is not already running. They cover 360, 390, 768 and 1440 px in all four languages, overflow, project routes, every language-switch pair, English as the default under different browser language preferences, keyboard navigation, mobile menu, image loading, real clipboard interaction, reduced motion, 404s and automated axe checks. Actual captures are written to `artifacts/screenshots/`.
+The Playwright configuration defaults to the installed Chrome executable on Windows and to Playwright's own Chromium elsewhere (`npx playwright install chromium` if it is missing). Set `CHROME_PATH` to use a specific Chrome/Chromium executable. The tests start the production preview if it is not already running. They cover 360, 390, 768 and 1440 px in all four languages, overflow, that screenshot windows never collide with their captions at six widths, project routes, every language-switch pair, English as the default under different browser language preferences, keyboard navigation, mobile menu, image loading, real clipboard interaction, reduced motion, 404s and automated axe checks. Actual captures are written to `artifacts/screenshots/`.
 
 For Lighthouse, leave `npm start` running in one terminal and use another:
 

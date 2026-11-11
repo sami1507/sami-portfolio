@@ -48,9 +48,25 @@ Screenshots are in `artifacts/screenshots/`; selected copies are in `deliverable
 
 TravelScan AI and TaskFlow live landing pages returned HTTP 200 and their expected interfaces when captured. This verifies those pages, not authenticated downstream features. PATHY images are original repository emulator captures. Content sources and the owner-confirmed team/solo distinctions are documented in [CONTENT-SOURCES.md](CONTENT-SOURCES.md).
 
+## Update — 11 November 2026: screenshot-window layout fix
+
+**Defect.** Reviewing real browser captures showed that the project screenshot windows were taller than their fixed-height cards at almost every width. The caption band then sat on top of the capture (on the English home page the TravelScan caption overlapped the orange call-to-action), TaskFlow was clipped at the top, and the two cards in the home grid used different image shapes. A measurement of window versus caption position over 12 widths (360–1920 px) and 6 pages found overlap or clipping in 107 of 120 cases; the Nov 8 automated checks did not measure this.
+
+**Fix** (`src/app/globals.css` only; no content, markup or image changes). Card height now follows the screenshot window instead of a fixed pixel height per breakpoint, both captures share one 1440:700 window ratio, and the bottom padding reserves the caption band plus the window's tilt. TravelScan is shown whole; TaskFlow loses only its empty lower part (a 3% top-anchored zoom keeps its footer line from being cut in half). The same layout applies to the home cards and the case-study covers.
+
+**Verification (this update only).**
+- Re-measured the same 120 cases: 0 overlap or clipping.
+- Added a regression test per language (`screenshot windows never collide with their captions`, six widths, home plus two case studies); it fails on the previous CSS (window 4.5 px under the caption at 360 px) and passes on the fix.
+- `npm run typecheck` and `npm run build` pass; `npm run test:e2e`: **65 passed** (61 previous + 4 new), three consecutive full runs, on Linux with Playwright's Chromium. One earlier full run right after a rebuild reported many failures that did not recur in the next three runs and whose cause was not identified.
+- Viewed actual captures of English, Arabic and German at desktop, tablet and phone widths.
+- `npm run dev` serves all routes and returns a real 404 for unknown pages.
+- Single Lighthouse runs (not the 30-run median above; different machine): accessibility, best practices and SEO 100 and CLS 0 on English, Arabic and TaskFlow pages in mobile and desktop; performance 100 everywhere except English mobile at 94 in that one run.
+
+**Limits.** The Source fingerprint above describes the Nov 8 delivery. It no longer matches the changed `src/`, and it could not be reproduced from the committed files with the stated procedure (likely a line-ending difference from the Windows workstation), so no replacement is given here. The 30-run Lighthouse audit was not repeated.
+
 ## Reproduce and remaining inputs
 
-Use `npm ci`, `npm run build`, `npm start`, then `npm run test:e2e` and `npm run audit` from another terminal. Set `CHROME_PATH` when Chrome is not at the configured Windows path. See [README.md](README.md) and [README.ar.md](README.ar.md) for this workstation's D-drive build copy and normal fresh-checkout instructions.
+Use `npm ci`, `npm run build`, `npm start`, then `npm run test:e2e` and `npm run audit` from another terminal. Set `CHROME_PATH` to use a specific Chrome; otherwise Windows uses its installed Chrome and other systems use Playwright's Chromium. See [README.md](README.md) and [README.ar.md](README.ar.md) for this workstation's D-drive build copy and normal fresh-checkout instructions.
 
 The genuine résumé PDF is still required before enabling the résumé link. More detailed individual feature attribution within PATHY's two-person team can be added if supplied. No employment history, clients, users or success percentages were invented.
 

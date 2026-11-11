@@ -319,3 +319,70 @@ for (const locale of locales) {
 test("unknown pages return an actual 404 response", async ({ request }) => {
   expect((await request.get("/this-page-does-not-exist/")).status()).toBe(404);
 });
+
+// Regression: screenshot windows once outgrew their fixed-height cards, so the
+// caption band covered the capture and TaskFlow was clipped at the top.
+for (const locale of locales) {
+  test(`${locale.lang}: screenshot windows never collide with their captions`, async ({
+    page,
+  }) => {
+    const pages = [
+      locale.home,
+      ...["travelscan-ai", "taskflow"].map(
+        (slug) => `${locale.home}projects/${slug}/`,
+      ),
+    ];
+    for (const width of [360, 390, 540, 768, 1024, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const path of pages) {
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        const visuals = await page.evaluate(() =>
+          [...document.querySelectorAll(".browser-visual")].map((visual) => {
+            const box = visual.getBoundingClientRect();
+            const window = visual
+              .querySelector(".browser-window")!
+              .getBoundingClientRect();
+            const caption = visual
+              .querySelector(".visual-caption")!
+              .getBoundingClientRect();
+            return {
+              topGap: window.top - box.top,
+              bottomGap: caption.top - window.bottom,
+              leftGap: window.left - box.left,
+              rightGap: box.right - window.right,
+              height: box.height,
+            };
+          }),
+        );
+        expect(visuals.length).toBeGreaterThan(0);
+        for (const visual of visuals) {
+          const where = `${path} at ${width}px`;
+          expect(
+            visual.topGap,
+            `${where}: window clipped at top`,
+          ).toBeGreaterThanOrEqual(0);
+          expect(
+            visual.bottomGap,
+            `${where}: window under caption`,
+          ).toBeGreaterThanOrEqual(0);
+          expect(
+            visual.leftGap,
+            `${where}: window clipped at left`,
+          ).toBeGreaterThanOrEqual(0);
+          expect(
+            visual.rightGap,
+            `${where}: window clipped at right`,
+          ).toBeGreaterThanOrEqual(0);
+        }
+        if (path === locale.home && visuals.length === 2) {
+          // Both cards sit in one row and must stay aligned.
+          expect(
+            Math.abs(visuals[0].height - visuals[1].height),
+            `${path} at ${width}px: cards differ in height`,
+          ).toBeLessThanOrEqual(1);
+        }
+      }
+    }
+  });
+}

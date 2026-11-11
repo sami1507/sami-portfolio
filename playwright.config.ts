@@ -14,9 +14,13 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:3000",
     launchOptions: {
+      // CHROME_PATH wins everywhere. Without it, Windows uses the installed
+      // Chrome; other systems fall back to Playwright's own Chromium.
       executablePath:
         process.env.CHROME_PATH ||
-        "C:/Program Files/Google/Chrome/Application/chrome.exe",
+        (process.platform === "win32"
+          ? "C:/Program Files/Google/Chrome/Application/chrome.exe"
+          : undefined),
     },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",

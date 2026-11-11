@@ -22,9 +22,13 @@ export const profile = {
   email: "samiaburaed42@gmail.com",
   github: "https://github.com/sami1507",
   linkedin: "https://www.linkedin.com/in/sami-abu-raaed-89277b307/",
+  // Priority: explicit NEXT_PUBLIC_SITE_URL (custom domain), then the Vercel
+  // production domain exposed at build time, then the previous Sites origin.
   siteUrl:
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site",
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site"),
   resume: null as string | null,
 };
 export const homePath = (locale: Locale) =>

@@ -60,7 +60,13 @@ The audit records Lighthouse JSON and HTML under `artifacts/lighthouse/`, includ
 
 Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin before building. The value controls canonical URLs, language alternates, Open Graph, robots and sitemap. The default is the assigned Sites origin. There are no secrets in this setting.
 
-Deploy the contents of `out/` to any static host that serves directory indexes and `404.html`. For Vercel, choose the Next.js project and use `npm run build`; alternatively deploy `out/` as static content. The `.openai/hosting.json` file binds this checkout to the assigned Sites project. The Sites delivery uses private access; making the site publicly accessible is a separate audience choice.
+### Vercel (recommended)
+
+1. In Vercel choose **Add New → Project** and import `sami1507/sami-portfolio`. The framework is detected as Next.js; leave the build command as `npm run build` (it already produces the static export).
+2. Optional: under **Settings → Environment Variables** add `NEXT_PUBLIC_SITE_URL` with your custom domain (for example `https://example.com`). Without it, canonical URLs, Open Graph, `robots.txt` and the sitemap use the project's Vercel production domain (`VERCEL_PROJECT_PRODUCTION_URL`, available when "Automatically expose System Environment Variables" is on, which is the default).
+3. Deploy. Every later push to `main` redeploys automatically.
+
+Deploy the contents of `out/` to any other static host that serves directory indexes and `404.html`. For Vercel, choose the Next.js project and use `npm run build`; alternatively deploy `out/` as static content. The `.openai/hosting.json` file binds this checkout to the assigned Sites project. The Sites delivery uses private access; making the site publicly accessible is a separate audience choice.
 
 Existing captures are included, so running the website does not require the Android repository. `npm run assets` is an optional maintenance script that refreshes PATHY images from `../docs/screenshots` and regenerates the social image/favicon. Preserve that source folder or update the script if regenerating outside this workspace. All fonts are self-hosted through Fontsource packages and use their included open font licences.
 

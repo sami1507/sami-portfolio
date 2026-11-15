@@ -141,9 +141,11 @@ export function Home({ locale }: { locale: Locale }) {
                 {t.caseStudy}
                 <Arrow diagonal />
               </a>
-              <a className="source-link" href={featured.github}>
-                GitHub <Arrow diagonal />
-              </a>
+              {featured.github && (
+                <a className="source-link" href={featured.github}>
+                  GitHub <Arrow diagonal />
+                </a>
+              )}
             </div>
             <a
               className="visual-link"
@@ -198,10 +200,12 @@ export function Home({ locale }: { locale: Locale }) {
                     {t.caseStudy}
                     <Arrow />
                   </a>
-                  <a href={project.github}>
-                    GitHub
-                    <Arrow diagonal />
-                  </a>
+                  {project.github && (
+                    <a href={project.github}>
+                      GitHub
+                      <Arrow diagonal />
+                    </a>
+                  )}
                   {project.live && (
                     <a href={project.live}>
                       {t.live}

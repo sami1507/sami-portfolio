@@ -4,7 +4,7 @@ This portfolio requires **no API keys, database, authentication service, or appl
 
 The projects described in the portfolio may use Firebase, Supabase, AI providers, or other services. Those integrations belong to their own applications; none of their credentials is needed to run this portfolio.
 
-## Current public deployment
+## Initial public deployment
 
 [Open the live portfolio](https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site). Sites confirmed successful public publication on 15 November 2026, following the owner's explicit authorization. All 16 pages and representative assets passed anonymous HTTP checks without cookies or authentication, and missing routes returned 404. English/Arabic switching and the Arabic PATHY page were also checked in the live browser. Evidence: `deliverables/public-deployment-verification.json`.
 
@@ -16,7 +16,7 @@ The current Sites static host ignores the generated `_headers` file: custom secu
 - Deployed source: `0451b5c535965df1467712fbcb57e9cde6420cd3`.
 - Audience: public, access revision 2.
 
-For a new build of this deployment, use `NEXT_PUBLIC_SITE_URL=https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site`. The résumé setting remains optional. The GitHub Actions workflow validates the source; publication is a separate Sites operation.
+The initial version above is retained as release history. See [PROJECT_STATE.md](PROJECT_STATE.md) for subsequent publication records. For a new build of this deployment, use `NEXT_PUBLIC_SITE_URL=https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site`. The résumé setting remains optional. The GitHub Actions workflow validates the source; publication is a separate Sites operation.
 
 ## What the contact and project controls do
 

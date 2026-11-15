@@ -35,18 +35,22 @@ export function CaseStudy({
             <h1>
               <bdi>{project.name}</bdi>
             </h1>
-            <div className="case-actions">
-              <a className="button button-primary" href={project.github}>
-                GitHub
-                <Arrow diagonal />
-              </a>
-              {project.live && (
-                <a className="button button-outline" href={project.live}>
-                  {t.live}
-                  <Arrow diagonal />
-                </a>
-              )}
-            </div>
+            {(project.github || project.live) && (
+              <div className="case-actions">
+                {project.github && (
+                  <a className="button button-primary" href={project.github}>
+                    GitHub
+                    <Arrow diagonal />
+                  </a>
+                )}
+                {project.live && (
+                  <a className="button button-outline" href={project.live}>
+                    {t.live}
+                    <Arrow diagonal />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
           <p className="case-summary">{project.summary[locale]}</p>
           <dl className="case-facts">
@@ -97,15 +101,17 @@ export function CaseStudy({
             </div>
           </section>
         )}
-        <section className="case-references container">
-          <p className="eyebrow">{t.references}</p>
-          {project.evidence.map((item) => (
-            <a href={item.url} key={item.url}>
-              <span dir="auto">{item.label[locale]}</span>
-              <Arrow diagonal />
-            </a>
-          ))}
-        </section>
+        {project.evidence.length > 0 && (
+          <section className="case-references container">
+            <p className="eyebrow">{t.references}</p>
+            {project.evidence.map((item) => (
+              <a href={item.url} key={item.url}>
+                <span dir="auto">{item.label[locale]}</span>
+                <Arrow diagonal />
+              </a>
+            ))}
+          </section>
+        )}
         <div className="next-project container">
           <span className="eyebrow">{t.next}</span>
           <a href={projectPath(locale, next.slug)}>

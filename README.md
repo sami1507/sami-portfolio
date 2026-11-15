@@ -2,9 +2,9 @@
 
 [Live website](https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site) — published publicly with Sites on 15 November 2026.
 
-A complete four-language portfolio built with Next.js, TypeScript and CSS. English is always the default (`/`), including for browsers set to another language. Arabic (`/ar/`) and Hebrew (`/he/`) have server-rendered RTL documents; German (`/de/`) uses LTR. Each featured project has a separate case study in all four languages. The language selector preserves the current case study.
+A complete four-language portfolio built with Next.js, TypeScript and CSS. English is always the default (`/`), including for browsers set to another language. Arabic (`/ar/`) and Hebrew (`/he/`) have server-rendered RTL documents; German (`/de/`) uses LTR. PATHY, TravelScan AI, TaskFlow, Mizan and Basira each have a separate case study in all four languages. The language selector preserves the current case study.
 
-Public source: [sami1507/sami-portfolio](https://github.com/sami1507/sami-portfolio). The current public deployment uses source commit `0451b5c535965df1467712fbcb57e9cde6420cd3`; deployment details and verification scope are recorded in [PROJECT_STATE.md](PROJECT_STATE.md).
+Public source: [sami1507/sami-portfolio](https://github.com/sami1507/sami-portfolio). Deployment records and verification scope are recorded in [PROJECT_STATE.md](PROJECT_STATE.md). Project links reflect verified availability: Mizan has public source, while Basira's source and application access remain private. Both use authentic screenshots with explicitly identified demo data.
 
 Start with this README, then see [API_SETUP.md](API_SETUP.md) for configuration and hosting, [BRAND.md](BRAND.md) for the logo/design system, [ASSET-LICENSES.md](ASSET-LICENSES.md) for asset provenance, [PROJECT_STATE.md](PROJECT_STATE.md) for the requirement register, and [QA-REPORT.md](QA-REPORT.md) for measured delivery evidence. Arabic instructions: [README.ar.md](README.ar.md).
 
@@ -28,12 +28,13 @@ The site is a static export in `out/`. `npm start` serves the real export with c
 
 ### This workstation
 
-The original Windows workspace has dependencies and output linked to another drive after earlier disk pressure. Next.js cannot reliably compile across drive-linked dependencies. The current clean-install validation uses `D:/sami-portfolio-delivery-20261111`; the workspace source remains authoritative. The older `D:/sami-portfolio-20261107` holds the existing junction targets. Keep source changes synchronized before using either build copy. This is specific to this workstation: a fresh checkout uses the standard commands above in one directory and needs no junctions or Android repository.
+The original Windows workspace has dependencies and build-cache directories linked to another drive after earlier disk pressure. Next.js cannot reliably compile across drive-linked dependencies. The current clean-install validation uses `D:/sami-portfolio-delivery-20261111`; the workspace source remains authoritative, with verified export files copied into its real `out` directory. The older `D:/sami-portfolio-20261107` holds the remaining junction targets. Keep source changes synchronized before using either build copy. This is specific to this workstation: a fresh checkout uses the standard commands above in one directory and needs no junctions or Android repository.
 
 ## Edit content
 
 - `src/data/site.ts`: profile, verified contact links, education and home-page translations. Site origin and optional résumé are environment settings.
-- `src/data/projects.ts`: project descriptions, roles, status, technical decisions, learning notes and evidence links in all four languages.
+- `src/data/projects.ts`: project catalog and shared type. Mizan and Basira's four-language case studies are separated into `src/data/mizan.ts` and `src/data/basira.ts`.
+- `src/data/project-previews.ts`: the new projects' screenshot dimensions, labels, translated alternative text and demo-data captions.
 - `src/data/interface.ts`: navigation labels, image descriptions, gallery text, error messages and page metadata in all four languages.
 - `src/app/globals.css`: design tokens, responsive layouts, typography and motion.
 - `src/components/`: shared semantic page components. Only navigation and clipboard feedback require client JavaScript.
@@ -41,7 +42,7 @@ The original Windows workspace has dependencies and output linked to another dri
 - `public/brand/`: full logo and icon exports in SVG/transparent PNG, dark/light/monochrome variants and a contact sheet. Regenerate using `npm run brand` without external services.
 - `CONTENT-SOURCES.md`: evidence and distinctions between project implementation, contribution and unverified outcomes.
 
-To add a project, add an object to `projects.ts` with a unique slug, translations for `en`, `ar`, `he` and `de`, a truthful status, role note and supporting links. Static case-study routes and the sitemap are generated from the same data. Add an actual optimized screenshot and extend `ProjectVisual.tsx` for the new visual composition. Do not reuse another project's image as evidence.
+To add a project, add an object to `projects.ts` with a unique slug, translations for `en`, `ar`, `he` and `de`, a truthful status, role note and supporting links. A longer case study can live in its own data file and be imported into the catalog. Static case-study routes and the sitemap are generated from the same data. Add an actual optimized screenshot and extend `ProjectVisual.tsx` or its preview data for the new composition. Source and live links are optional; unavailable links and empty evidence sections stay hidden. Do not reuse another project's image as evidence.
 
 To add the real résumé, place it at `public/sami-abu-raaed-cv.pdf` and set `NEXT_PUBLIC_RESUME_URL=/sami-abu-raaed-cv.pdf` in `.env.local` or the host's build environment. Alternatively use a public HTTPS file URL. No source-code change is needed. `npm run check:config` validates local PDFs (signature, location and 10 MB size limit); external URLs need a manual file-open check. Leave the setting empty to keep the link hidden. Clipboard operations have pending, success and failure states; denied/unavailable clipboard access leaves the visible email and `mailto:` link usable. No mail is sent by this website.
 

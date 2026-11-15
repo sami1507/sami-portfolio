@@ -1,4 +1,6 @@
 import type { Locale } from "./site";
+import { mizanProject } from "./mizan";
+import { basiraProject } from "./basira";
 type Localized = Record<Locale, string>;
 
 export interface Project {
@@ -11,9 +13,9 @@ export interface Project {
   role: Localized;
   roleNote: Localized;
   stack: string[];
-  github: string;
+  github?: string;
   live?: string;
-  visual: "pathy" | "travel" | "taskflow";
+  visual: "pathy" | "travel" | "taskflow" | "mizan" | "basira";
   sections: { title: Localized; body: Localized }[];
   evidence: { label: Localized; url: string }[];
 }
@@ -427,4 +429,6 @@ export const projects: Project[] = [
       },
     ],
   },
+  mizanProject,
+  basiraProject,
 ];

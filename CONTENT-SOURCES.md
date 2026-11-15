@@ -1,6 +1,6 @@
 # Content evidence
 
-Reviewed 7 November 2026. This file records the evidence behind the portfolio, rather than making commercial performance claims. Repository descriptions establish implementation intent and code structure; they are not independent production or field-test certificates.
+Initially reviewed 7 November 2026; Mizan and Basira evidence added 15 November 2026. This file records the evidence behind the portfolio, rather than making commercial performance claims. Repository descriptions establish implementation intent and code structure; they are not independent production or field-test certificates.
 
 ## Profile and contact
 
@@ -48,10 +48,30 @@ Reviewed 7 November 2026. This file records the evidence behind the portfolio, r
 - Scope: Sami explicitly confirmed that his remaining projects, including TaskFlow, are personal and individually developed. No backend, signup, cloud synchronization or cross-device persistence is claimed for TaskFlow.
 - Real repository screenshot: <https://raw.githubusercontent.com/sami1507/taskflow-kanban/main/docs/screenshot.png>. New live captures can also be used.
 
+## Mizan
+
+- Public repository: <https://github.com/sami1507/mizan-finance-web>, inspected through the GitHub connector at commit `d1a65f380bea806dd3de4001eaec90ed3aea2c0d` on 15 November 2026.
+- Sources: [README](https://github.com/sami1507/mizan-finance-web/blob/d1a65f380bea806dd3de4001eaec90ed3aea2c0d/README.md), `PROJECT_STATE.md`, `package.json`, `src/lib/finance.ts`, `src/server/finance-service.ts`, `tests/delivery.integration.test.ts` and `docs/simulator-model.md` at that commit.
+- Supported description: manual accounts, income/expense records, budgets, savings goals, recurring schedules and reports, plus a monthly savings calculator and a 30/60/90-day decision simulator. Arabic, English, Hebrew and German support both writing directions and light/dark themes. ILS, USD and EUR totals remain separate.
+- Verified stack: Next.js, TypeScript, React, Tailwind CSS, Drizzle ORM, Better Auth and PostgreSQL, with PGlite for local operation. Money uses integer minor units; balances derive from the ledger. Related changes and owner-scoped retry identities are recorded atomically, so an unchanged repeated request does not create another entry. Inspected integration tests cover concurrent retries and rollback; this research pass did not rerun those tests.
+- Simulator assumptions are temporary and do not change the ledger. Possible overlap between manual and scheduled entries requires review. No bank connection, payment execution, currency conversion or AI integration is claimed.
+- Role/status: solo personal project, per Sami's confirmation; in development. No public live URL was verified. The repository explicitly distinguishes public source publication from hosted operation; provider setup and live verification remain separate.
+- Authentic image: `public/dashboard-preview-en.png` from the inspected commit, 1440 × 1050, with synthetic demo data. Its downloaded Git blob hash matched `463b174bef93efe4001ce923c9df0d09b3d92ebb`. The portfolio uses `public/images/mizan.webp`, 1440 × 1050, 79552 bytes, converted from that capture without redesigning its content.
+
+## Basira
+
+- Source: owner-provided private project, inspected on 15 November 2026 at commit `18cd0cf8d06b6623035769656928656b6bbd727d`. Its source and private deployment remain private; no repository or live-demo link is exposed in the portfolio.
+- Sources: `README.md`, `package.json`, `vite.config.ts`, `worker/index.ts`, `lib/finance.ts`, `lib/model.ts`, `lib/files.ts`, `app/workspace.tsx`, `app/api/projects/[id]/route.ts`, `lib/server.ts` and `db/schema.ts` in the supplied source.
+- Supported description: an Arabic/English business-planning workspace with a 24-month financial model, base/down/up scenarios, a source register, actual-versus-plan comparison and CSV/XLSX import/export. The implementation uses React, TypeScript, Vinext/Vite, a Cloudflare Worker, D1, Drizzle, Zod, Decimal.js and ExcelJS.
+- Technical decision: deterministic Decimal.js calculations handle collection delays, inventory consumption, depreciation, debt, drawings and funding gaps. Financial arithmetic is not delegated to AI. Source code preserves an original baseline and version history, with revision conflict checks for saved projects.
+- Role/status: solo personal project, per Sami's confirmation; private prototype. Optional AI needs server configuration and has not been verified against a real provider. No market-research findings, success probabilities, customer outcomes or production reliability are inferred from the source.
+- Authentic image: the source's `docs/preview.jpg`, 1348 × 926, explicitly labels all figures as synthetic demo data rather than market research. The displayed cafe matches the synthetic fixture in `lib/model.ts`; the image contains no private business records or customer uploads. The portfolio uses `public/images/basira.webp`, 1348 × 926, 52914 bytes, converted from this screenshot, with captions identifying the synthetic data.
+
 ## Remaining confirmations
 
 The portfolio includes English, Arabic, Hebrew and German. Translations retain the same source-backed claims and owner-confirmed roles; they are not additional evidence. The German education entry preserves the original English diploma title rather than claiming equivalence to a German qualification. Project screenshots remain authentic captures in the projects' original interface languages, with translated captions and alternative text.
 
 1. Obtain the genuine resume PDF before enabling a resume link.
 2. Exact per-feature contribution boundaries within the two-person PATHY team, if stronger individual claims are desired.
-3. A public audience decision and any custom domain. The assigned Sites origin is already used by canonical metadata and sitemap.
+
+Sami has authorized public publication of the portfolio. The assigned Sites origin is already used by canonical metadata and sitemap; this does not change Basira's private source or deployment audience.

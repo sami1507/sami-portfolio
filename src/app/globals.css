@@ -948,6 +948,35 @@ a:hover > .round-arrow .arrow {
 .taskflow-visual .browser-window {
   transform: rotate(2deg);
 }
+.mizan-visual {
+  background: #d7dfdc;
+  color: #243d40;
+}
+.basira-visual {
+  background: #dce3cf;
+  color: #244439;
+}
+.basira-visual .browser-window {
+  transform: rotate(2deg);
+}
+.project-card .browser-visual.mizan-visual,
+.project-card .browser-visual.basira-visual {
+  height: auto;
+  padding: 32px 28px 60px;
+}
+.project-card .mizan-visual .browser-window img,
+.project-card .basira-visual .browser-window img {
+  height: auto;
+  aspect-ratio: 1440 / 1050;
+  object-fit: contain;
+  background: #f8fafb;
+}
+.mizan-visual .visual-caption {
+  background: #d7dfdc;
+}
+.basira-visual .visual-caption {
+  background: #dce3cf;
+}
 .visual-link:hover .browser-window {
   transform: rotate(0) translateY(-3px);
 }
@@ -1381,6 +1410,16 @@ a:hover > .round-arrow .arrow {
 }
 .case-cover .visual-caption {
   font-size: 10px;
+}
+.case-cover .browser-visual.mizan-visual,
+.case-cover .browser-visual.basira-visual {
+  height: auto;
+  padding: 48px 10% 72px;
+}
+.case-cover .mizan-visual .browser-window img,
+.case-cover .basira-visual .browser-window img {
+  aspect-ratio: auto;
+  height: auto;
 }
 .case-content {
   padding-block: 60px;

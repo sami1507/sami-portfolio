@@ -1,6 +1,8 @@
 import { Topography } from "./Icons";
 import { copy, type Locale } from "@/data/site";
 import { interfaceCopy } from "@/data/interface";
+import type { Project } from "@/data/projects";
+import { projectPreviews } from "@/data/project-previews";
 export function Phone({
   src,
   alt,
@@ -31,7 +33,7 @@ export function ProjectVisual({
   locale,
   hero = false,
 }: {
-  kind: "pathy" | "travel" | "taskflow";
+  kind: Project["visual"];
   locale: Locale;
   hero?: boolean;
 }) {
@@ -96,6 +98,30 @@ export function ProjectVisual({
         </div>
       </div>
     );
+  const preview =
+    kind === "travel"
+      ? {
+          src: "/images/travelscan.webp",
+          width: 1440,
+          height: 700,
+          label: "travel-scan-ai.vercel.app",
+          alt: ui.travelScreen,
+          caption: t.travelCaption,
+        }
+      : kind === "taskflow"
+        ? {
+            src: "/images/taskflow.webp",
+            width: 1440,
+            height: 1000,
+            label: "sami1507.github.io/taskflow-kanban",
+            alt: ui.taskScreen,
+            caption: t.taskflowCaption,
+          }
+        : {
+            ...projectPreviews[kind],
+            alt: projectPreviews[kind].alt[locale],
+            caption: projectPreviews[kind].caption[locale],
+          };
   return (
     <div className={`project-visual browser-visual ${kind}-visual`}>
       <div className="browser-window">
@@ -105,18 +131,14 @@ export function ProjectVisual({
             <i />
             <i />
           </span>
-          <span dir="ltr">
-            {kind === "travel"
-              ? "travel-scan-ai.vercel.app"
-              : "sami1507.github.io/taskflow-kanban"}
-          </span>
+          <span dir="ltr">{preview.label}</span>
           <span aria-hidden="true">↗</span>
         </div>
         <img
-          src={`/images/${kind === "travel" ? "travelscan" : "taskflow"}.webp`}
-          width="1440"
-          height="1000"
-          alt={kind === "travel" ? ui.travelScreen : ui.taskScreen}
+          src={preview.src}
+          width={preview.width}
+          height={preview.height}
+          alt={preview.alt}
           loading="lazy"
           decoding="async"
         />
@@ -125,7 +147,7 @@ export function ProjectVisual({
         <span className="caption-cross" aria-hidden="true">
           +
         </span>
-        <span>{kind === "travel" ? t.travelCaption : t.taskflowCaption}</span>
+        <span>{preview.caption}</span>
         <span aria-hidden="true">↗</span>
       </div>
     </div>

@@ -1,6 +1,20 @@
-# Verification report — 11 November 2026
+# Verification report
 
-The four-language portfolio is locally verified and ready for hosting configuration and live deployment verification. Its source repository is public. No new website deployment was performed. The genuine résumé remains optional owner input; no API keys or database are required.
+## Mizan and Basira expansion — 15 November 2026
+
+The catalog now contains five projects, four home pages and twenty localized case studies. The configured production build generated 27 HTML files and 56 header rules. New screenshots are genuine captures with explicitly identified sample/synthetic data. Basira's private source and application are not linked publicly; Mizan has a verified public repository but no verified live demo.
+
+- TypeScript, formatting and production builds passed.
+- All 25 unit tests passed, with zero skipped. The first restricted run could not connect to localhost; the authorized rerun passed without code changes.
+- All 90 Playwright tests passed in 6.7 minutes using Chrome for Testing 158.0.8127.18 against the production export on port 3011. This includes all twenty case studies at 390 and 1440 px, images, axe checks, all language switches, same-origin assets, metadata, keyboard interaction, honest clipboard states and real 404s.
+- Following the thumbnail refinement, all 20 affected home responsiveness/accessibility checks passed again in 1.1 minutes: all four languages at 360, 390, 768 and 1440 px, plus axe.
+- Visual review covered the actual desktop screenshots and Arabic Basira in the in-app browser. Case-study images keep their complete proportions; the new homepage captures have dedicated space for readable demo captions.
+
+Publication records and live-host limitations are maintained in [PROJECT_STATE.md](PROJECT_STATE.md). The measurements below are retained historical evidence and are not presented as fresh audits of the expanded site.
+
+## Original delivery — 11 November 2026
+
+At this checkpoint the four-language portfolio was locally verified and ready for hosting configuration and live deployment verification. Its source repository was public; website deployment had not yet been performed. The genuine résumé remains optional owner input; no API keys or database are required.
 
 ## Build, tests and security
 

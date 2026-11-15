@@ -8,8 +8,9 @@ Owner: Sami Abu Raaed. Public source: [sami1507/sami-portfolio](https://github.c
 
 - Visitor journey: introduction → real project evidence → case study → email / verified profile / optional real résumé.
 - Preserve Next.js, TypeScript, static export and the charcoal/ivory/lime identity. English is the default root; Arabic and Hebrew are RTL; German is LTR.
-- Four localized home pages and twelve case studies use separate content data. Images are real project captures with translated captions/alt text.
-- Owner-confirmed roles: PATHY is an academic two-person programming project with divided responsibilities; TravelScan AI is solo academic; TaskFlow is solo personal. No fabricated employment, clients, usage figures or results.
+- Four localized home pages and twenty case studies use separate content data. Images are real project captures with translated captions/alt text.
+- Owner-confirmed roles: PATHY is an academic two-person programming project with divided responsibilities; TravelScan AI is solo academic; TaskFlow, Mizan and Basira are solo personal projects. No fabricated employment, clients, usage figures or results.
+- Mizan and Basira have four-language case studies and genuine demo captures. Mizan links to its public repository; no live URL was verified. Basira's source and application remain private, with no invented or inaccessible public link.
 - Accounts, databases, payments, analytics, mail-submission services, webhooks and AI APIs are not part of this portfolio. Featured-project integrations belong to their separate applications.
 - Publication is evidenced by the successful Sites deployment recorded below. The public source repository and local audit reports remain separate evidence.
 

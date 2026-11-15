@@ -8,7 +8,7 @@ const locales = [
   { lang: "he", dir: "rtl", home: "/he/" },
   { lang: "de", dir: "ltr", home: "/de/" },
 ] as const;
-const projectSlugs = ["pathy", "travelscan-ai", "taskflow"];
+const projectSlugs = ["pathy", "travelscan-ai", "taskflow", "mizan", "basira"];
 const emailAddress = "samiaburaed42@gmail.com";
 const clipboardErrors = {
   en: "Could not copy. You can select the email address or use the email link.",
@@ -179,13 +179,18 @@ for (const locale of locales) {
   }) => {
     await page.goto(locale.home);
     const links = await page
-      .locator('a[href*="/projects/"]')
+      .locator('main a[href*="/projects/"]')
       .evaluateAll((anchors) => [
         ...new Set(
-          anchors.map((anchor) => (anchor as HTMLAnchorElement).pathname),
+          anchors
+            .map((anchor) => anchor as HTMLAnchorElement)
+            .filter((anchor) => anchor.origin === location.origin)
+            .map((anchor) => anchor.pathname),
         ),
       ]);
-    expect(links.length).toBeGreaterThanOrEqual(2);
+    expect(links.sort()).toEqual(
+      projectSlugs.map((slug) => `${locale.home}projects/${slug}/`).sort(),
+    );
     for (const href of links) {
       const response = await request.get(href);
       expect(response.status(), href).toBe(200);

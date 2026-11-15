@@ -10,6 +10,10 @@ The catalog now contains five projects, four home pages and twenty localized cas
 - Following the thumbnail refinement, all 20 affected home responsiveness/accessibility checks passed again in 1.1 minutes: all four languages at 360, 390, 768 and 1440 px, plus axe.
 - Visual review covered the actual desktop screenshots and Arabic Basira in the in-app browser. Case-study images keep their complete proportions; the new homepage captures have dedicated space for readable demo captions.
 
+- Public Sites version 2 deployed `31f7cbc` successfully at 14:08:51 UTC. All 24 routes, all eight localized new case studies, both images and the exact 24-route sitemap passed anonymous verification without authentication; a missing route returned 404. The public Mizan and Basira pages were also checked in the browser. Durable evidence: `verification/project-expansion-live.json`.
+- [GitHub Actions run 43722133496](https://github.com/sami1507/sami-portfolio/actions/runs/43722133496) passed for this application source.
+- An additional one-run mobile homepage Lighthouse audit against the local production export was attempted on 15 November with Chrome for Testing 158.0.8127.18. It stalled for more than six minutes without a measurement; only its verified owned browser was stopped. The script exited with `ConnectionClosedError: Connection closed` and an empty measurement list. No fresh Lighthouse score is claimed. The failed attempt is retained locally under `D:/sami-portfolio-delivery-20261111/artifacts/lighthouse/recheck-home-mobile`.
+
 Publication records and live-host limitations are maintained in [PROJECT_STATE.md](PROJECT_STATE.md). The measurements below are retained historical evidence and are not presented as fresh audits of the expanded site.
 
 ## Original delivery — 11 November 2026
@@ -78,7 +82,7 @@ A second recheck used the pinned Playwright **Chrome for Testing 158.0.8127.18**
 
 Two of these last three browser shutdowns exceeded the 15-second process-close deadline on Windows. The helper reported that cleanup limitation and retained their temporary profiles rather than deleting an active profile. A separate real-page navigation/close check observed closure, removed its profile and returned no warning (21.9 seconds total including synchronous Windows termination). This is a remaining local audit-tool cleanup limitation; it does not affect the shipped static website. No further page or design changes were made to obtain the recheck scores.
 
-## Delivery and remaining live checks
+## Original delivery and then-remaining live checks (11 November)
 
 Source, static export and brand ZIPs, plus actual phone/desktop screenshots, are assembled in `deliverables/`. The static archive's 228 entries were checked for all four language roots, case studies, robots/sitemap, true 404 document, health and header files; source/dependency/secret folders are not web assets. The tested export was synchronized to the workstation's output junction.
 

@@ -1,8 +1,10 @@
 # Sami Abu Raaed — portfolio
 
+[Live website](https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site) — published publicly with Sites on 15 November 2026.
+
 A complete four-language portfolio built with Next.js, TypeScript and CSS. English is always the default (`/`), including for browsers set to another language. Arabic (`/ar/`) and Hebrew (`/he/`) have server-rendered RTL documents; German (`/de/`) uses LTR. Each featured project has a separate case study in all four languages. The language selector preserves the current case study.
 
-Public source: [sami1507/sami-portfolio](https://github.com/sami1507/sami-portfolio). This repository contains the site source; a public GitHub repository is not a deployed website.
+Public source: [sami1507/sami-portfolio](https://github.com/sami1507/sami-portfolio). The current public deployment uses source commit `0451b5c535965df1467712fbcb57e9cde6420cd3`; deployment details and verification scope are recorded in [PROJECT_STATE.md](PROJECT_STATE.md).
 
 Start with this README, then see [API_SETUP.md](API_SETUP.md) for configuration and hosting, [BRAND.md](BRAND.md) for the logo/design system, [ASSET-LICENSES.md](ASSET-LICENSES.md) for asset provenance, [PROJECT_STATE.md](PROJECT_STATE.md) for the requirement register, and [QA-REPORT.md](QA-REPORT.md) for measured delivery evidence. Arabic instructions: [README.ar.md](README.ar.md).
 
@@ -71,7 +73,7 @@ The audit records Lighthouse JSON and HTML under `artifacts/lighthouse/`, includ
 
 Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin, without a path, query or credentials. These are public build settings, not secrets. Run `npm run check:config -- --release`, then `npm run build:release`. Release preflight fails clearly if the origin is missing or invalid. Rebuild whenever public settings change; a static export cannot read new environment values at runtime.
 
-Deploy the contents of `out/` to a static host with HTTPS, directory indexes and a true `404.html` response. The post-build script generates `_headers` with shared security headers and exact inline-script CSP hashes for hosts that support this file (including Cloudflare Pages). Hosts that ignore `_headers` need equivalent response-header configuration; verify the live headers after deployment. Do not rewrite every missing route to the home page. Root-level hosting is supported; GitHub Pages under `/sami-portfolio/` would require a base-path adaptation and is not the prepared deployment target. The existing `.openai/hosting.json` retains the assigned Sites identity, but no website deployment is implied by that file. Follow [API_SETUP.md](API_SETUP.md) for the supported setup without writing application code.
+Deploy the contents of `out/` to a static host with HTTPS, directory indexes and a true `404.html` response. The post-build script generates `_headers` with shared security headers and exact inline-script CSP hashes for hosts that support this file (including Cloudflare Pages). Hosts that ignore `_headers` need equivalent response-header configuration; verify the live headers after deployment. Do not rewrite every missing route to the home page. Root-level hosting is supported; GitHub Pages under `/sami-portfolio/` would require a base-path adaptation and is not the prepared deployment target. The existing `.openai/hosting.json` identifies the Sites project used for the successful public deployment. For updates to this site, set `NEXT_PUBLIC_SITE_URL=https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site` before rebuilding. Follow [API_SETUP.md](API_SETUP.md) for the deployment record and supported setup without writing application code.
 
 Back up the Git repository plus any owner-supplied résumé. There is no application database or visitor state to export. Keep a previous static build/release on the host; roll back by redeploying that complete build. Verify `/`, `/ar/`, `/he/`, `/de/`, a project page, `/health.json`, and a nonexistent path after deployment or rollback.
 
@@ -81,6 +83,5 @@ Existing captures are included, so running the website does not require the Andr
 
 - The real résumé PDF.
 - Exact feature-by-feature ownership within PATHY's two-person academic team, only if more detailed individual attribution is desired. Sami confirmed that TravelScan AI is a solo academic project and the other projects are solo personal work.
-- A hosting destination, final origin and website publication authorization. The source repository is already public; no new audience or hosting permissions are changed automatically.
 
 No employment history, experience duration, user counts, client claims, testimonials or unmeasured success percentages have been added.

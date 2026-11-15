@@ -4,6 +4,20 @@ This portfolio requires **no API keys, database, authentication service, or appl
 
 The projects described in the portfolio may use Firebase, Supabase, AI providers, or other services. Those integrations belong to their own applications; none of their credentials is needed to run this portfolio.
 
+## Current public deployment
+
+[Open the live portfolio](https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site). Sites confirmed successful public publication on 15 November 2026, following the owner's explicit authorization. All 16 pages and representative assets passed anonymous HTTP checks without cookies or authentication, and missing routes returned 404. English/Arabic switching and the Arabic PATHY page were also checked in the live browser. Evidence: `deliverables/public-deployment-verification.json`.
+
+The current Sites static host ignores the generated `_headers` file: custom security headers and immutable asset caching are not active there. WOFF2 is served with a generic MIME type but loads correctly. See [PROJECT_STATE.md](PROJECT_STATE.md) for the measured host limitations; local security-header tests and Lighthouse scores are not live-host results.
+
+- Site project: `appgprj_6aef3c1bf2a4819193de81d06e79da6f`.
+- Version 1: `appgprj_6aef3c1bf2a4819193de81d06e79da6f~appgver_62c4caa37b7c81918852282fd6a022e6`.
+- Successful deployment: `appgdep_6af9b39a69488191a61012a7abde0c59`.
+- Deployed source: `0451b5c535965df1467712fbcb57e9cde6420cd3`.
+- Audience: public, access revision 2.
+
+For a new build of this deployment, use `NEXT_PUBLIC_SITE_URL=https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site`. The résumé setting remains optional. The GitHub Actions workflow validates the source; publication is a separate Sites operation.
+
 ## What the contact and project controls do
 
 - **Email:** a `mailto:` link opens the visitor's configured email application. It does not send a message from the website or report a successful delivery.
@@ -61,7 +75,7 @@ The release command fails if the origin is missing or invalid, or if a configure
 
 ## Local server and QA environment
 
-The following settings belong to tooling. Set them in the shell or CI environment that launches the command. Unlike Next and `check-config.mjs`, the standalone preview/audit scripts and Playwright configuration do **not** automatically read `.env.local`.
+The following settings belong to tooling. Set them in the shell or CI environment that launches the command; these tooling keys are not loaded automatically from `.env.local`. Playwright reads only `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_RESUME_URL` from production environment files so assertions match the built site. Existing process values, including empty strings, take precedence. The standalone preview/audit scripts do not load environment files.
 
 | Variable                  | Default                                                                                                                                               | Where it applies                                                                                                                                                                                                            |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -96,15 +110,15 @@ Run QA commands from another terminal with the relevant environment values set t
 
 No OAuth app, redirect URI registration, database migration, webhook URL, or API provider account is required. Host credentials, if needed for an authorized deployment, belong to the hosting platform's secure deployment mechanism; they do not belong in this site's public settings.
 
-These steps describe a deployment process, not a claim that any publication has already occurred. The inputs still needed for a new deployment are the exact target project/account and public origin, the intended audience and authorization to publish there, and optionally the genuine résumé file or public URL. Existing explicit authorization remains valid for its agreed scope.
+The current Sites deployment is public and succeeded as recorded above. These steps also apply when moving to another hosting provider: configure that target and its origin before rebuilding, and verify its behavior after publication. Existing explicit authorization remains valid for its agreed scope. The genuine résumé file or public URL is still optional owner input.
 
 ## خطوات سريعة بالعربية
 
 1. لا تحتاج إلى مفاتيح API أو قاعدة بيانات أو خدمة تسجيل دخول. شغّل `npm ci` ثم `npm run dev` للمعاينة المحلية.
 2. انسخ `.env.example` إلى `.env.local`. اترك `NEXT_PUBLIC_SITE_URL` فارغًا للمعاينة؛ سيبقى الموقع خارج الفهرسة وتكون خريطة الموقع فارغة.
-3. عند معرفة عنوان النشر، ضع أصل HTTPS الكامل في `NEXT_PUBLIC_SITE_URL`، دون مسار فرعي. شغّل `npm run check:config` ثم `npm run build:release`.
+3. لتحديث الموقع المنشور، ضع `https://sami-abu-raaed-studio.samiaburaed42.chatgpt.site` في `NEXT_PUBLIC_SITE_URL`. عند الانتقال لاستضافة أخرى استخدم أصل HTTPS الجديد دون مسار فرعي. شغّل `npm run check:config` ثم `npm run build:release`.
 4. السيرة اختيارية: أضف ملف PDF الحقيقي إلى `public/` وحدّد مساره في `NEXT_PUBLIC_RESUME_URL`، أو استخدم رابط HTTPS عامًا للملف. يبقى الزر مخفيًا دون هذه القيمة.
-5. انشر مجلد `out/` بعد تحديد حساب الاستضافة والعنوان والجمهور المطلوب والتفويض بالنشر. فعّل HTTPS، واختبر الصفحات والروابط والفهرسة بعد النشر.
+5. نُشر الإصدار الأول للعامة عبر Sites في 15 نوفمبر 2026. عند تحديثه، انشر مجلد `out/` الجديد وافحص الصفحات والروابط والفهرسة بعد النشر. تفاصيل الإصدار والجمهور مذكورة أعلاه.
 6. رابط البريد يفتح تطبيق البريد لدى الزائر؛ لا يرسل الموقع رسالة تلقائيًا. زر النسخ يعمل داخل المتصفح، وروابط GitHub وLinkedIn والمشاريع روابط خارجية عادية.
 
 تغيير القيم العامة يتطلب إعادة البناء والنشر. القيم الخاصة بأدوات الاختبار والخادم المحلي تُضبط في بيئة الطرفية؛ وضعها في `.env.local` وحده لا يفعّلها لهذه الأدوات.
